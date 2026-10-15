@@ -64,7 +64,19 @@ button { font: inherit; color: inherit }
 .btn-primary:hover { transform: translateY(-2px); background-position: 100% 0; box-shadow: 0 16px 40px -12px var(--accent) }
 .btn-ghost { border-color: var(--line); background: var(--surface) }
 .btn-ghost:hover { border-color: var(--accent); transform: translateY(-2px) }
-.nav-cta { padding: 10px 18px; font-size: .9rem }
+.nav-cta { padding: 10px 18px; font-size: .9rem; white-space: nowrap }
+.menu-btn { display: none; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 0 }
+.menu-btn span { display: block; width: 16px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .3s, opacity .2s }
+.menu-btn.open span:nth-child(1) { transform: translateY(6px) rotate(45deg) }
+.menu-btn.open span:nth-child(2) { opacity: 0 }
+.menu-btn.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg) }
+.mobile-menu { border-top: 1px solid var(--line); background: var(--bg); max-height: calc(100dvh - 72px); overflow-y: auto }
+.nav .mobile-menu nav.wrap { display: grid; justify-content: stretch; align-items: stretch; gap: 0; padding-block: 8px 20px }
+.mobile-menu nav > a { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 1.45rem; letter-spacing: -.02em; animation: fadeUp .4s both }
+.mobile-menu nav > a em { font-style: normal; font-family: var(--mono); font-size: .75rem; color: var(--muted); font-weight: 400 }
+.mobile-menu nav > a:active span { color: var(--accent) }
+.mm-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px }
+.mm-cta .btn { flex: 1 1 140px; justify-content: center }
 
 /* hero */
 .hero { position: relative; overflow: hidden }
@@ -232,7 +244,8 @@ section { padding-block: 104px }
 
 /* responsive */
 @media (max-width: 920px) {
-  .nav ul { display: none }
+  .desktop-nav { display: none }
+  .menu-btn { display: flex }
   .hero-grid { grid-template-columns: 1fr; padding-block: 36px 48px }
   .hero-visual { width: 100%; max-width: 460px; margin: 0 auto }
   .proj, .about, .contact { grid-template-columns: 1fr }
@@ -248,7 +261,9 @@ section { padding-block: 104px }
   .skills, .builds, .services { grid-template-columns: 1fr }
   .builds { margin-top: 72px }
   .contact { padding: 40px 22px; border-radius: 22px }
-  .nav-cta { display: none }
+  .nav-cta { padding: 9px 14px; font-size: .84rem }
+  .nav-right { gap: 8px }
+  .theme-btn, .menu-btn { width: 40px; height: 40px }
   .mock { font-size: 9px }
   .code { font-size: .72rem; padding: 14px }
   .c2 { right: 0 } .c3 { left: 0 }
